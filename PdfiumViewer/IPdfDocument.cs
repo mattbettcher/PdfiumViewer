@@ -104,7 +104,7 @@ namespace PdfiumViewer
         /// <param name="rotate">Rotation.</param>
         /// <param name="flags">Flags used to influence the rendering.</param>
         /// <returns>The rendered image.</returns>
-        Image Render(int page, int width, int height, float dpiX, float dpiY, PdfRotation rotate, PdfRenderFlags flags);
+        Image Render(int page, int width, int height, float dpiX, float dpiY, PdfRotation rotate, PdfRenderFlags flags, bool drawFormFields);
 
         /// <summary>
         /// Save the PDF document to the specified location.

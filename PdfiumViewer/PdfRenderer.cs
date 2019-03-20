@@ -667,7 +667,7 @@ namespace PdfiumViewer
             var pageCache = _pageCache[page];
 
             if (pageCache.Image == null)
-                pageCache.Image = Document.Render(page, pageBounds.Width, pageBounds.Height, graphics.DpiX, graphics.DpiY, Rotation, PdfRenderFlags.Annotations);
+                pageCache.Image = Document.Render(page, pageBounds.Width, pageBounds.Height, graphics.DpiX, graphics.DpiY, Rotation, PdfRenderFlags.Annotations, true);
 
             graphics.DrawImageUnscaled(pageCache.Image, pageBounds.Location);
         }

@@ -289,7 +289,7 @@ namespace PdfiumViewer
         /// <returns>The rendered image.</returns>
         public Image Render(int page, int width, int height, float dpiX, float dpiY, PdfRenderFlags flags)
         {
-            return Render(page, width, height, dpiX, dpiY, 0, flags);
+            return Render(page, width, height, dpiX, dpiY, 0, flags & ~PdfRenderFlags.Annotations, (flags & PdfRenderFlags.Annotations) != 0);
         }
 
         /// <summary>
@@ -302,8 +302,9 @@ namespace PdfiumViewer
         /// <param name="dpiY">Vertical DPI.</param>
         /// <param name="rotate">Rotation.</param>
         /// <param name="flags">Flags used to influence the rendering.</param>
+        /// <param name="drawFormFields">Draw form fields.</param>
         /// <returns>The rendered image.</returns>
-        public Image Render(int page, int width, int height, float dpiX, float dpiY, PdfRotation rotate, PdfRenderFlags flags)
+        public Image Render(int page, int width, int height, float dpiX, float dpiY, PdfRotation rotate, PdfRenderFlags flags, bool drawFormFields)
         {
             if (_disposed)
                 throw new ObjectDisposedException(GetType().Name);
@@ -336,7 +337,8 @@ namespace PdfiumViewer
                         0, 0, width, height,
                         (int)rotate,
                         FlagsToFPDFFlags(flags),
-                        (flags & PdfRenderFlags.Annotations) != 0
+                        //(flags & PdfRenderFlags.Annotations) != 0
+                        drawFormFields
                     );
 
                     if (!success)

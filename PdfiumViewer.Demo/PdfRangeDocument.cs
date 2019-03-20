@@ -136,9 +136,9 @@ namespace PdfiumViewer.Demo
             return _document.Render(TranslatePage(page), width, height, dpiX, dpiY, flags);
         }
 
-        public Image Render(int page, int width, int height, float dpiX, float dpiY, PdfRotation rotate, PdfRenderFlags flags)
+        public Image Render(int page, int width, int height, float dpiX, float dpiY, PdfRotation rotate, PdfRenderFlags flags, bool drawFormFields)
         {
-            return _document.Render(page, width, height, dpiX, dpiY, rotate, flags);
+            return _document.Render(page, width, height, dpiX, dpiY, rotate, flags, drawFormFields);
         }
 
         public void Save(string path)
